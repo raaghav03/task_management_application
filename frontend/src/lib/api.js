@@ -1,7 +1,7 @@
 // lib/api.js
 import axios from "axios";
 
-const API_URL = "http://localhost:5001"; // Change to your backend URL if different
+const API_URL = "https://task-management-application-jn96.vercel.app/"; // Change to your backend URL if different
 
 export const getTasks = async () => {
   const response = await axios.get(`${API_URL}/tasks`);
