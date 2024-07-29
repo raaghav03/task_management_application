@@ -2,10 +2,12 @@ import dotenv from "dotenv";
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import Task from "./models/taskModel";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
-const port = 3000;
+app.use(cors());
+const port = 5001;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
