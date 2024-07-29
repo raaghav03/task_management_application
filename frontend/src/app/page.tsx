@@ -69,7 +69,7 @@ const Tasks = () => {
                 <div>{task.priority}</div>
                 <div>{task.deadline}</div>
 
-                <div className='flex gap-2'> {/* Optional: flex for buttons as well */}
+                <div className='flex gap-2'> 
                   <button onClick={() => {
                     setTaskName(task.title);
                     setSelectedTask(task._id);

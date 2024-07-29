@@ -8,12 +8,6 @@ import {
     Cycle,
     Notifications,
 } from ".././assets/Icons";
-// const menuItems = [
-//     { icon: <Home />, text: "Home", path: "/" },
-//     { icon: <Job />, text: "Job", path: "/job" },
-//     { icon: <Referral />, text: "Referral", path: "/referral" },
-//     { icon: <Setting />, text: "Settings", path: "/settings" },
-// ];
 import React from "react";
 import { Button } from "./ui/button";
 const menuItems = [
@@ -52,6 +46,13 @@ const Sidebar = () => {
                         ))}
                     </div>
                 </nav>
+                <div className="position: relative; display: flex; height: 3.25rem; padding: 0.5rem; justify-content: center; align-items: center; gap: 0.5rem; border-radius: 0.5rem; overflow: hidden;">
+                    <div className="position: absolute; inset: 0; pointer-events: none; border-radius: 0.5rem; background: linear-gradient(180deg, #4C38C2 0%, #2F2188 100%); border: 1px solid transparent; background-origin: border-box; background-clip: padding-box, border-box; background-image: linear-gradient(#4C38C2, #2F2188), linear-gradient(to bottom, #9C93D4, #4B36CC); box-shadow: inset 0px 12px 16px rgba(186, 186, 186, 0.20), 0px 1px 8px rgba(0, 0, 0, 0.25);"></div>
+                    <div className="position: relative; flex: 1; display: flex; justify-content: center; align-items: center;">
+                        Create New Task
+                    </div>
+                </div>
+
             </div>
         </div>
     );

@@ -11,13 +11,16 @@ const port = 5001;
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.get("/api/health", (req: Request, res: Response) => {
+  res.status(200).json({ status: "OK" });
+});
 
 mongoose
   .connect(process.env.MONGO_URI as string)
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+    app.listen(process.env.PORT || 5001, () => {
+      console.log(`Server is running on port ${process.env.PORT || 5001}`);
     });
   })
   .catch((err) => console.error("Failed to connect to MongoDB", err));
