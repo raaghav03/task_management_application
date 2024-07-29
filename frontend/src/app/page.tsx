@@ -1,7 +1,7 @@
 "use client"
 import { ReactNode, useEffect, useState } from 'react';
 import { getTasks, createTask, updateTask, deleteTask } from '../lib/api';
-
+import Sidebar from "../components/Sidebar"
 interface Task {
   _id: string;
   title: string;
@@ -46,38 +46,44 @@ const Tasks = () => {
   };
 
   return (
-    <div>
-      <h1 className='underline'>Tasks</h1>
-      <input
-        type="text"
-        value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
-        placeholder="Enter task name"
-      />
-      <button onClick={selectedTask ? () => handleUpdate(selectedTask) : handleCreate}>
-        {selectedTask ? 'Update Task' : 'Add Task'}
-      </button>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task._id} className='flex flex-col gap-4 border-[1px] border-gray-400 w-fit rounded-md p-4 text-gray-500'>
-            <div className='underline'>{task.title}</div>
-            <div>{task.description}</div>
-            <div>{task.status}</div>
-            <div>{task.priority}</div>
-            <div>{task.deadline}</div>
+    <>
+      <div className="flex gap-4">
+        <Sidebar />
+        <div>
+          <h1 className='underline'>Tasks</h1>
+          <input
+            type="text"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            placeholder="Enter task name"
+          />
+          <button onClick={selectedTask ? () => handleUpdate(selectedTask) : handleCreate}>
+            {selectedTask ? 'Update Task' : 'Add Task'}
+          </button>
+          <ul>
+            {tasks.map((task) => (
+              <li key={task._id} className='flex flex-col gap-4 border-[1px] border-gray-400 w-fit rounded-md p-4 text-gray-500'>
+                <div className='underline'>{task.title}</div>
+                <div>{task.description}</div>
+                <div>{task.status}</div>
+                <div>{task.priority}</div>
+                <div>{task.deadline}</div>
 
-            <div className='flex gap-2'> {/* Optional: flex for buttons as well */}
-              <button onClick={() => {
-                setTaskName(task.title);
-                setSelectedTask(task._id);
-              }}>Edit</button>
-              <button onClick={() => handleDelete(task._id)}>Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+                <div className='flex gap-2'> {/* Optional: flex for buttons as well */}
+                  <button onClick={() => {
+                    setTaskName(task.title);
+                    setSelectedTask(task._id);
+                  }}>Edit</button>
+                  <button onClick={() => handleDelete(task._id)}>Delete</button>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-    </div>
+        </div>
+      </div>
+
+    </>
   );
 };
 
